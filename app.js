@@ -28,6 +28,13 @@ app.use(async (ctx, next) => {
   console.log(`${ctx.method} ${ctx.url} - ${rt}`);
 });
 
+//CORS 설정
+const cors = require('@koa/cors')
+app.use(cors({
+  origin: '*',
+  credentials: true, //쿠키 허용
+}))
+
 // x-response-time
 app.use(async (ctx, next) => {
   const start = Date.now();
